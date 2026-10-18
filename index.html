@@ -5,59 +5,85 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>A Year of Us ❤️</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
-:root {
-  --paper:#f6ecdd; --blush:#e9c5c2; --rose:#c4808a;
-  --wine:#7a2338; --brown:#5b4236; --ink:#4a362c;
+:root{
+  --paper:#f6ecdd;--blush:#e9c5c2;--rose:#c4808a;
+  --wine:#7a2338;--brown:#5b4236;--ink:#4a362c;
   --hand:"Gaegu","Comic Sans MS",cursive;
 }
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 Georgia,serif;overflow-x:hidden}
-h2{font:700 2.2rem var(--hand);color:var(--wine)}
-h3{font:700 1.5rem var(--hand)}
+h2{font:700 2.2rem var(--hand);color:var(--wine);margin:0 0 12px}
+h3{font:700 1.5rem var(--hand);margin:8px 0}
 button{font:inherit;cursor:pointer;color:inherit}
-button:focus-visible{outline:3px solid var(--wine)}
+button:focus-visible{outline:3px solid var(--wine);outline-offset:3px}
 .hidden{display:none!important}
-#bar{position:fixed;top:0;left:0;height:4px;background:var(--rose);z-index:50;width:0}
-#gate{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center}
-.greet{font:700 2rem var(--hand);color:var(--wine)}
-section{max-width:860px;margin:auto;padding:4rem 20px 2rem}
-.sub{opacity:.75;font-style:italic;margin-bottom:1.5rem}
+#bar{position:fixed;top:0;left:0;height:4px;background:var(--rose);z-index:100;width:0}
+#gate{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
+.greet{font:700 2.3rem var(--hand);color:var(--wine)}
 .btn{background:var(--wine);color:#fff7ef;border:0;padding:10px 20px;border-radius:5px 12px;font:1.2rem var(--hand);margin:5px}
 .ghost{background:transparent;color:var(--wine);border:1px dashed var(--wine)}
-.ew{width:min(320px,100%);margin:20px auto}
-.ew.big{width:min(420px,100%)}
-.env{position:relative;width:100%;height:140px;border:0;background:linear-gradient(var(--blush),#dcaeb0);box-shadow:3px 5px #5b423622}
-.big .env{height:200px}
-.flap{position:absolute;inset:0 0 auto;height:62%;background:#d79ea5;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .7s}
+section{max-width:900px;margin:0 auto;padding:65px 24px 25px;scroll-margin-top:25px}
+.sub{display:block;position:relative;margin:12px 0 24px;line-height:1.6;font-style:italic}
+.ew{width:min(340px,100%);margin:20px auto}
+.ew.big{width:min(430px,100%)}
+.env{position:relative;width:100%;height:150px;border:0;background:linear-gradient(var(--blush),#dcaeb0);box-shadow:3px 5px #5b423622}
+.big .env{height:190px}
+.flap{position:absolute;inset:0 0 auto;height:62%;background:#d79ea5;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .65s;z-index:2}
 .env.open .flap{transform:rotateX(180deg)}
-.seal{position:absolute;left:50%;top:48%;border-radius:50%;background:var(--wine);color:white;padding:5px 10px;transform:translateX(-50%)}
+.seal{position:absolute;left:50%;top:48%;border-radius:50%;background:var(--wine);color:white;padding:5px 10px;transform:translateX(-50%);z-index:3}
 .env.open .seal{opacity:0}
 .lab{position:absolute;bottom:10px;left:0;width:100%;font:1.3rem var(--hand)}
-.note{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s}
+.note{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s}
 .env.open+.note{grid-template-rows:1fr}
 .note>div{overflow:hidden;min-height:0}
-.paper{margin-top:10px;padding:20px;background:#fffaf0 repeating-linear-gradient(transparent 0 29px,#c4808a33 29px 30px);font:1.3rem/30px var(--hand);white-space:pre-line;box-shadow:2px 3px #5b423622;opacity:0;transition:opacity .5s}
+.paper{margin-top:10px;padding:20px;background:#fffaf0 repeating-linear-gradient(transparent 0 29px,#c4808a33 29px 30px);font:1.3rem/30px var(--hand);white-space:pre-line;box-shadow:2px 3px #5b423622}
+.note .paper{opacity:0;transition:opacity .4s}
 .env.open+.note .paper{opacity:1}
-.sig{text-align:right;color:var(--wine)}
-.tl{border-left:2px dashed var(--rose);padding-left:22px}
+.sig{text-align:right;color:var(--wine);display:block}
+.tl{border-left:2px dashed var(--rose);padding-left:22px;margin-left:4px}
 .ms{position:relative;margin-bottom:30px;padding:15px;background:#fffaf0;box-shadow:2px 4px #5b423622}
-.ms:before{content:"♥";position:absolute;left:-28px;color:var(--wine)}
-.ms.small{max-width:300px;background:#fff3b8;transform:rotate(-1deg)}
+.ms:before{content:"♥";position:absolute;left:-29px;color:var(--wine)}
+.ms.small{max-width:370px;background:#fff3b8;transform:rotate(-.5deg)}
 .date{font:.95rem var(--hand);color:var(--rose)}
 .story{display:none}.story.show{display:block}
-.pic{width:100%;max-height:260px;object-fit:cover;display:block;margin:10px 0}
+.pic{width:100%;max-height:280px;object-fit:cover;display:block;margin:10px 0}
 .ph{display:flex;align-items:center;justify-content:center;text-align:center;min-height:150px;padding:10px;border:2px dashed var(--rose);background:#f3e3d6;font:1rem var(--hand)}
 .count{font:1rem var(--hand)}
-#garden{position:relative;height:250px;background:linear-gradient(#fbeee8 0 70%,#7a5640 70%);border-radius:8px;overflow:hidden}
-.pl{position:absolute;bottom:20px;border:0;background:none;padding:0;transform-origin:bottom}
-.pl svg{width:100%;height:auto;transform:scaleY(0);transition:transform 1s}
-.pl.grown svg{transform:scaleY(1)}
-.seed{position:absolute;bottom:0;left:40%;width:22px;height:11px;border-radius:50%;background:#5a3b2a}
-.pl.grown .seed{opacity:0}
-#gnote{min-height:5rem}
-.giftwrap{text-align:center;min-height:310px;position:relative}
+/* GARDEN FIX: separate heading, instructions, garden and note */
+#garden{
+ position:relative;display:block;width:100%;height:280px;
+ margin:28px 0 20px;overflow:hidden;isolation:isolate;border-radius:12px;
+ background:linear-gradient(to bottom,#fbeee8 0%,#fbeee8 67%,#9a755b 67%,#9a755b 100%);
+}
+#garden .pl{
+ position:absolute;bottom:18px;z-index:2;display:flex;align-items:flex-end;
+ justify-content:center;padding:0;border:0;background:transparent;
+ transform-origin:bottom center;touch-action:manipulation;
+}
+#garden .pl svg{
+ display:block;width:100%;height:180px;transform:scaleY(0);
+ transform-origin:bottom center;transition:transform .6s;pointer-events:none;
+}
+#garden .pl.grown svg{transform:scaleY(1)}
+#garden .seed{
+ position:absolute;bottom:0;left:50%;width:18px;height:10px;
+ border-radius:50%;background:#5a3b2a;transform:translateX(-50%);
+}
+#garden .pl.grown .seed{opacity:0}
+#garden .pl:focus-visible{outline:3px solid var(--wine)}
+#garden+.count{margin-top:12px}
+#gnote{
+ position:relative;min-height:90px;margin:18px 0;padding:18px;
+ border-radius:8px;background:#fffaf0;color:var(--brown);
+ font:1.25rem/1.6 var(--hand);white-space:pre-line;
+}
+#gnote p{margin:5px 0}
+#gnote h3{color:var(--wine)}
+.giftwrap{text-align:center;min-height:300px;position:relative}
 .gift{position:relative;width:170px;height:150px;margin:60px auto 0;border:0;background:none}
 .gbody{position:absolute;bottom:0;left:0;right:0;height:100px;background:var(--rose)}
 .gbody:after,.glid:after{content:"";position:absolute;left:43%;width:26px;height:100%;background:var(--wine)}
@@ -65,318 +91,612 @@ section{max-width:860px;margin:auto;padding:4rem 20px 2rem}
 .glid:before{content:"";position:absolute;left:40%;top:-18px;width:36px;height:20px;border:6px solid var(--wine);border-radius:50%}
 .gift.open .glid{transform:translate(-30px,-60px) rotate(-28deg)}
 .gtag{font:1.2rem var(--hand);color:var(--wine)}
-#gout{max-width:420px;margin:auto}
+#gout{max-width:450px;margin:auto}
 .alb{display:flex;flex-wrap:wrap;gap:22px;justify-content:center}
 .pol{width:190px;background:white;padding:10px;border:0;box-shadow:2px 4px 8px #0003;transition:transform .2s}
 .pol img,.pol .ph{height:170px;width:100%;object-fit:cover}
 .pol span{display:block;font:1rem var(--hand);margin-top:6px}
-#lb{position:fixed;inset:0;background:#3c231ee8;z-index:60;display:flex;align-items:center;justify-content:center;padding:15px}
+#lb{position:fixed;inset:0;background:#3c231ee8;z-index:200;display:flex;align-items:center;justify-content:center;padding:15px}
 #lb .in{background:#fffaf0;max-width:520px;width:100%;max-height:92vh;overflow:auto;padding:15px;text-align:center}
 #lb img{max-width:100%;max-height:52vh;object-fit:contain}
 .row{display:flex;justify-content:space-between;gap:5px}
 .scraps{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
 .scrap{border:0;padding:12px;font:1.2rem var(--hand);box-shadow:2px 2px #0002}
 .scrap.on{outline:2px solid var(--wine)}
-.ow{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px;align-items:start}
-#lout{min-height:5rem;text-align:center}
+.ow{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:15px;align-items:start}
+#lout{text-align:center}
 .clock{display:flex;gap:20px;justify-content:center;font:1.2rem var(--hand);flex-wrap:wrap}
 .clock b{font-size:1.7rem;color:var(--wine)}
 .final{text-align:center;margin-top:25px}
-#music{position:fixed;right:10px;bottom:10px;z-index:55;background:#fffaf0;padding:8px;border-radius:20px;box-shadow:2px 3px #0002;display:flex;gap:8px;align-items:center}
+#music{position:fixed;right:10px;bottom:10px;z-index:150;background:#fffaf0;padding:8px;border-radius:20px;box-shadow:2px 3px #0002;display:flex;gap:8px;align-items:center}
 #music button{border:0;background:var(--wine);color:white;border-radius:50%;width:32px;height:32px}
-footer{text-align:center;padding:30px 10px 70px}
 .rv{opacity:0;transform:translateY(12px);transition:.7s}
 .rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.rv{opacity:1;transform:none}}
+footer{text-align:center;padding:30px 10px 70px}
+@keyframes pop{to{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}}
+@media(max-width:600px){
+ section{padding:45px 17px 20px}
+ #garden{height:250px;margin-top:22px}
+ #garden .pl svg{height:150px}
+ .clock{gap:12px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+ .rv{opacity:1;transform:none}
+}
 </style>
 </head>
+
 <body>
 <div id="bar"></div>
 <header id="gate"><div id="gateInner"></div></header>
 <main id="main" class="hidden"></main>
-<div id="music" class="hidden"><button id="mbtn" aria-label="Play or pause">▶</button><input id="vol" type="range" min="0" max="1" step=".05" value=".5" aria-label="Volume"></div>
+<div id="music" class="hidden">
+ <button id="mbtn" aria-label="Play or pause music">▶</button>
+ <input id="vol" type="range" min="0" max="1" step=".05" value=".5" aria-label="Volume">
+</div>
 <div id="lb" class="hidden" role="dialog" aria-modal="true" aria-label="Photo viewer"></div>
-<footer id="foot" class="hidden"><button class="btn ghost" id="replay">Replay the opening</button></footer>
+<footer id="foot" class="hidden">
+ <button class="btn ghost" id="replay">Replay the opening</button>
+</footer>
 
 <script>
-/* EDIT YOUR PERSONAL DETAILS IN THIS CONFIGURATION */
-const CONFIG = {
-  partnerName:"Your Love",
-  yourName:"Your Name",
-  anniversaryDate:"2025-10-18T00:00:00",
-  title:"A year of us",
-  gate:{
-    greeting:"Hi, you.",
-    line:"I made a little something for you.",
-    letter:"I made this little world for you.\n\nTake your time with it. There's a little bit of my heart hidden in here.",
-    button:"Come, let me show you something"
-  },
-  show:{story:true,letter:true,garden:true,gift:true,album:true,openWhen:true,loves:true,counter:true,next:true},
-  effects:{reveal:true,confetti:true},
-  music:{src:"",title:"Our song",startVolume:.5},
-  timeline:[
-    {size:"big",date:"The beginning",title:"Before I knew what this was",story:"I didn't know then that you'd become the person I tell everything to. I just remember not wanting the conversation to end.",photo:"timeline-1.jpg"},
-    {size:"small",date:"Early on",title:"The conversation that ran late",story:"Somewhere in the middle of it, I stopped trying to say the right thing and just said the true one."},
-    {size:"small",date:"Somewhere in there",title:"When I knew",story:"There wasn't a big moment. It was a small one, and I thought: oh. It's you."},
-    {size:"big",date:"One of many",title:"The one we still laugh about",story:"One of us starts the story, the other finishes it wrong, and then we're both laughing.",photo:"timeline-4.jpg"},
-    {size:"small",date:"A quiet night",title:"The sweetest thing you said",story:"You probably don't remember saying it. I do."},
-    {size:"big",date:"The hard stretch",title:"When it was difficult",story:"We kept talking until things were better. I trust us more because of it."},
-    {size:"small",date:"Out of nowhere",title:"Feeling lucky",story:"Some days I think, how did I end up with you? Then I decide to be grateful."},
-    {size:"big",date:"My favourite",title:"If I could replay one day",story:"Nothing grand happened. We were just together, and that's the day I'd pick.",photo:"timeline-8.jpg"},
-    {size:"small",date:"Next",title:"What I'm looking forward to",story:"More ordinary days, slow mornings, bad jokes, and plans we haven't made yet."}
+/* ==================================================
+   PERSONALISE YOUR WEBSITE HERE
+   Keep your JPG files beside index.html.
+================================================== */
+const CONFIG={
+ partnerName:"Your Love",
+ yourName:"Your Name",
+ anniversaryDate:"2025-10-18T00:00:00",
+ title:"A Year of Us ❤️",
+
+ gate:{
+  greeting:"Hi, you.",
+  line:"I made a little something for you.",
+  letter:"I made this little world for you.\n\nTake your time with it. There's a little bit of my heart hidden in here.",
+  button:"Come, let me show you something"
+ },
+
+ show:{
+  story:true,letter:true,garden:true,gift:true,album:true,
+  openWhen:true,loves:true,counter:true,next:true
+ },
+ effects:{reveal:true,confetti:true},
+ music:{src:"",title:"Our song",startVolume:.5},
+
+ timeline:[
+  {size:"big",date:"The beginning",title:"Before I knew what this was",story:"I didn't know then that you'd become the person I tell everything to. I just remember not wanting the conversation to end.",photo:"timeline-1.jpg"},
+  {size:"small",date:"Early on",title:"The conversation that ran late",story:"Somewhere in the middle of it, I stopped trying to say the right thing and just said the true one."},
+  {size:"small",date:"Somewhere in there",title:"When I knew",story:"There wasn't a big moment. It was a small one, and I thought: oh. It's you."},
+  {size:"big",date:"One of many",title:"The one we still laugh about",story:"One of us starts the story, the other finishes it wrong, and then we're both laughing.",photo:"timeline-4.jpg"},
+  {size:"small",date:"A quiet night",title:"The sweetest thing you said",story:"You probably don't remember saying it. I do."},
+  {size:"big",date:"The hard stretch",title:"When it was difficult",story:"We kept talking until things were better. I trust us more because of it."},
+  {size:"small",date:"Out of nowhere",title:"Feeling lucky",story:"Some days I think, how did I end up with you? Then I decide to be grateful."},
+  {size:"big",date:"My favourite",title:"If I could replay one day",story:"Nothing grand happened. We were just together, and that's the day I'd pick.",photo:"timeline-8.jpg"},
+  {size:"small",date:"Next",title:"What I'm looking forward to",story:"More ordinary days, slow mornings, bad jokes, and plans we haven't made yet."}
+ ],
+
+ loveLetter:{
+  label:"A letter, if you have a minute",
+  greeting:"My favourite person,",
+  body:"I'm better at writing things down than saying them, so here we are.\n\nThank you for the patience, the laughs, and the way you show up. I don't say it enough, so I'm saying it here.\n\nI'm really glad it's you.",
+  closing:"Yours,",
+  signature:"Your Name"
+ },
+
+ flowers:[
+  {title:"Your laugh",type:"sunflower",message:"It's the first thing I'd miss. It makes a bad day lighter."},
+  {title:"How you care",type:"rose",message:"You notice the small things. That's how I know you're listening."},
+  {title:"Your patience",type:"tulip",message:"You give me time when I'm figuring something out."},
+  {title:"Little habits",type:"daisy",message:"The tiny things you do are a big part of why home feels like you."},
+  {title:"Ordinary days",type:"poppy",message:"A normal day with you is better than most special occasions."},
+  {title:"Your kindness",type:"daisy",message:"You're kind when nobody's watching, and I've learned from that."},
+  {title:"Your stubborn side",type:"tulip",message:"Yes, even that. It means you care."},
+  {title:"One more",type:"rose",message:"There's a memory I keep for quiet moments. Ask me about it later."}
+ ],
+
+ surprises:[
+  {enabled:true,title:"A little promise",message:"I promise to say the nice things out loud, not only think them."},
+  {enabled:true,title:"A favourite photo",message:"I like this one. It looks like us.",image:"surprise.jpg"},
+  {enabled:true,title:"A playlist for you",message:"Songs that sound like us. Press play when you're making tea.",link:""},
+  {enabled:false,title:"A voice note",message:"Press play, it's just me.",audio:"voice-note.mp3"},
+  {enabled:false,title:"A short video",message:"",video:"surprise.mp4"}
+ ],
+
+ giftNote:"There's one more thing for you.",
+
+ album:{
+  photos:[
+   {src:"memory-1.jpg",caption:"Us, as usual",date:"This year",story:"A little memory I want to keep."},
+   {src:"memory-2.jpg",caption:"Caught mid-laugh",date:"This year",story:"I'd take a hundred of these over a posed one."},
+   {src:"memory-3.jpg",caption:"A quiet one",date:"This year",story:"Not much happening here. That's exactly why I like it."},
+   {src:"memory-4.jpg",caption:"Looking back",date:"This year",story:"Look how far we've come. I'd do it all again."}
   ],
-  loveLetter:{
-    label:"A letter, if you have a minute",
-    greeting:"My favourite person,",
-    body:"I'm better at writing things down than saying them, so here we are.\n\nThank you for the patience, the laughs, and the way you show up. I don't say it enough, so I'm saying it here.\n\nI'm really glad it's you.",
-    closing:"Yours,",
-    signature:"Your Name"
-  },
-  flowers:[
-    {title:"Your laugh",type:"sunflower",message:"It's the first thing I'd miss. It makes a bad day lighter."},
-    {title:"How you care",type:"rose",message:"You notice the small things. That's how I know you're listening."},
-    {title:"Your patience",type:"tulip",message:"You give me time when I'm figuring something out."},
-    {title:"Little habits",type:"daisy",message:"The tiny things you do are a big part of why home feels like you."},
-    {title:"Ordinary days",type:"poppy",message:"A normal day with you is better than most special occasions."},
-    {title:"Your kindness",type:"daisy",message:"You're kind when nobody's watching, and I've learned from that."},
-    {title:"Your stubborn side",type:"tulip",message:"Yes, even that. It means you care."},
-    {title:"One more",type:"rose",message:"There's a memory I keep for quiet moments. Ask me about it later."}
+  video:{src:"",caption:"A moving memory"}
+ },
+
+ openWhen:[
+  {label:"Open when you miss me",note:"I miss you too, probably right now. I'm thinking about you, and the next time we're together is closer than it feels."},
+  {label:"Open when you need a smile",note:"Think of the thing that always sets us off. You know the one. Now say it out loud."},
+  {label:"Open when it's a bad day",note:"You don't have to fix it today. Breathe, drink some water, and know I'm on your side."},
+  {label:"Open when you can't sleep",note:"Nothing has to be solved right now. Picture somewhere calm. I'll see you in the morning."},
+  {label:"Open when you remember our first year",note:"We started as strangers who couldn't stop talking, and we're something much better now."},
+  {label:"Open when you need to know what you mean to me",note:"A lot. You're the person I want to tell things to first, good or bad."},
+  {label:"Open when you wonder about our future",note:"A home that feels like both of us, little trips, and being old and still bickering over silly things."}
+ ],
+
+ loves:[
+  "The way you listen like there's nowhere else you'd rather be.",
+  "How you remember the small things I mention once.",
+  "Your laugh when something is funnier than it should be.",
+  "That you check in on me.",
+  "Your hands. I notice them more than I'd admit.",
+  "How you get excited about other people's good news.",
+  "The way you say my name when you're teasing me.",
+  "Your sleepy voice in the morning.",
+  "That you try new things even when you're nervous.",
+  "How you make boring errands feel like an outing.",
+  "Your terrible jokes. I laugh at the delivery.",
+  "How safe it feels to sit in silence with you.",
+  "That you're honest with me, even when it's hard."
+ ],
+
+ next:{
+  message:"That's one year. I don't know exactly what the next one holds, but I know I want to spend it with you.",
+  promises:[
+   {label:"Somewhere new",note:"A trip, big or small. Somewhere neither of us has been."},
+   {label:"Something small",note:"A little weekly thing that's only ours."},
+   {label:"Something brave",note:"One thing that scares us both a bit, done together."},
+   {label:"Something silly",note:"Let's do something ridiculous and take a terrible photo."},
+   {label:"A promise",note:"I'll keep choosing you, on easy days and harder ones."}
   ],
-  surprises:[
-    {enabled:true,title:"A little promise",message:"I promise to say the nice things out loud, not only think them."},
-    {enabled:true,title:"A favourite photo",message:"I like this one. It looks like us.",image:"surprise.jpg"},
-    {enabled:true,title:"A playlist for you",message:"Songs that sound like us. Press play when you're making tea.",link:""},
-    {enabled:false,title:"A voice note",message:"Press play, it's just me.",audio:"voice-note.mp3"},
-    {enabled:false,title:"A short video",message:"",video:"surprise.mp4"}
-  ],
-  giftNote:"There's one more thing for you.",
-  album:{
-    photos:[
-      {src:"memory-1.jpg",caption:"Us, as usual",date:"This year",story:"A little memory I want to keep."},
-      {src:"memory-2.jpg",caption:"Caught mid-laugh",date:"This year",story:"I'd take a hundred of these over a posed one."},
-      {src:"memory-3.jpg",caption:"A quiet one",date:"This year",story:"Not much happening here. That's exactly why I like it."},
-      {src:"memory-4.jpg",caption:"Looking back",date:"This year",story:"Look how far we've come. I'd do it all again."}
-    ],
-    video:{src:"",caption:"A moving memory"}
-  },
-  openWhen:[
-    {label:"Open when you miss me",note:"I miss you too, probably right now. I'm thinking about you, and the next time we're together is closer than it feels."},
-    {label:"Open when you need a smile",note:"Think of the thing that always sets us off. You know the one. Now say it out loud."},
-    {label:"Open when it's a bad day",note:"You don't have to fix it today. Breathe, drink some water, and know I'm on your side."},
-    {label:"Open when you can't sleep",note:"Nothing has to be solved right now. Picture somewhere calm. I'll see you in the morning."},
-    {label:"Open when you remember our first year",note:"We started as strangers who couldn't stop talking, and we're something much better now."},
-    {label:"Open when you need to know what you mean to me",note:"A lot. You're the person I want to tell things to first, good or bad."},
-    {label:"Open when you wonder about our future",note:"A home that feels like both of us, little trips, and being old and still bickering over silly things."}
-  ],
-  loves:[
-    "The way you listen like there's nowhere else you'd rather be.",
-    "How you remember the small things I mention once.",
-    "Your laugh when something is funnier than it should be.",
-    "That you check in on me.",
-    "Your hands. I notice them more than I'd admit.",
-    "How you get excited about other people's good news.",
-    "The way you say my name when you're teasing me.",
-    "Your sleepy voice in the morning.",
-    "That you try new things even when you're nervous.",
-    "How you make boring errands feel like an outing.",
-    "Your terrible jokes. I laugh at the delivery.",
-    "How safe it feels to sit in silence with you.",
-    "That you're honest with me, even when it's hard."
-  ],
-  next:{
-    message:"That's one year. I don't know exactly what the next one holds, but I know I want to spend it with you.",
-    promises:[
-      {label:"Somewhere new",note:"A trip, big or small. Somewhere neither of us has been."},
-      {label:"Something small",note:"A little weekly thing that's only ours."},
-      {label:"Something brave",note:"One thing that scares us both a bit, done together."},
-      {label:"Something silly",note:"Let's do something ridiculous and take a terrible photo."},
-      {label:"A promise",note:"I'll keep choosing you, on easy days and harder ones."}
-    ],
-    buttonText:"One last thing",
-    finalMessage:"Happy anniversary, my love.\n\nThank you for this year. I'm looking forward to every one after it.\n\nI love you.\n\nYour Name"
-  }
+  buttonText:"One last thing",
+  finalMessage:"Happy anniversary, my love.\n\nThank you for this year. I'm looking forward to every one after it.\n\nI love you.\n\nYour Name"
+ }
 };
 
-/* WEBSITE ENGINE — no need to edit below this line */
+/* ==================================================
+   WEBSITE ENGINE — PERSONAL CONTENT IS ABOVE
+================================================== */
 const $=(s,r=document)=>r.querySelector(s);
-const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
-const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const el=(tag,cls,html)=>{
+ const e=document.createElement(tag);
+ if(cls)e.className=cls;
+ if(html!==undefined)e.innerHTML=html;
+ return e;
+};
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"
+}[c]));
 const arr=a=>Array.isArray(a)?a:[];
 const C=CONFIG,main=$("#main");
 const noMotion=matchMedia("(prefers-reduced-motion: reduce)").matches;
 document.title=C.title||"For you";
 
 function media(src,cls,label){
-  const ph=()=>el("div","ph","Add image: "+esc(src||label||"photo.jpg"));
-  if(!src)return ph();
-  const i=new Image();i.src=src;i.alt=label||"";if(cls)i.className=cls;
-  i.onerror=()=>i.replaceWith(ph());return i;
+ const placeholder=()=>{
+  const p=el("div","ph","Add image: "+esc(src||label||"photo.jpg"));
+  return p;
+ };
+ if(!src)return placeholder();
+ const img=new Image();
+ img.src=src;img.alt=label||"";
+ if(cls)img.className=cls;
+ img.onerror=()=>img.replaceWith(placeholder());
+ return img;
 }
+
 function envelope(label,paperHTML,big,seal){
-  const w=el("div","ew"+(big?" big":""));
-  const b=el("button","env",'<span class="flap"></span><span class="seal">'+esc(seal||"♥")+'</span><span class="lab">'+esc(label)+'</span>');
-  b.setAttribute("aria-expanded","false");
-  const n=el("div","note",'<div><div class="paper">'+paperHTML+'</div></div>');
-  b.onclick=()=>{const o=b.classList.toggle("open");b.setAttribute("aria-expanded",o)};
-  w.append(b,n);w.toggle=()=>b.click();return w;
+ const w=el("div","ew"+(big?" big":""));
+ const b=el("button","env",
+  '<span class="flap"></span><span class="seal">'+esc(seal||"♥")+'</span><span class="lab">'+esc(label)+'</span>');
+ b.type="button";b.setAttribute("aria-expanded","false");
+ const n=el("div","note",'<div><div class="paper">'+paperHTML+'</div></div>');
+ b.addEventListener("click",()=>{
+  const open=b.classList.toggle("open");
+  b.setAttribute("aria-expanded",String(open));
+ });
+ w.append(b,n);
+ w.toggle=()=>b.click();
+ return w;
 }
+
 function sec(id,title,sub){
-  const s=el("section");s.id=id;if(C.effects.reveal)s.classList.add("rv");
-  s.append(el("h2",null,esc(title)));if(sub)s.append(el("p","sub",esc(sub)));main.append(s);return s;
+ const s=el("section");s.id=id;
+ if(C.effects.reveal)s.classList.add("rv");
+ s.append(el("h2",null,esc(title)));
+ if(sub)s.append(el("p","sub",esc(sub)));
+ main.append(s);
+ return s;
 }
+
 function buildGate(){
-  const g=C.gate,box=$("#gateInner");box.innerHTML="";
-  box.append(el("p","greet",esc(g.greeting)),el("p",null,esc(g.line)));
-  const e=envelope("For "+C.partnerName,esc(g.letter),true,"♥");
-  const go=el("button","btn",esc(g.button));go.style.display="none";
-  e.querySelector=undefined;
-  const env=e.querySelector;
-  const btn=e.firstChild;
-  btn.onclick=()=>{const o=btn.classList.toggle("open");btn.setAttribute("aria-expanded",o);go.style.display=o?"inline-block":"none"};
-  go.onclick=()=>{$("#gate").classList.add("hidden");main.classList.remove("hidden");$("#foot").classList.remove("hidden");if(C.music.src)$("#music").classList.remove("hidden");scrollTo(0,0);observe()};
-  box.append(e,go);
+ const g=C.gate,box=$("#gateInner");
+ box.innerHTML="";
+ box.append(el("p","greet",esc(g.greeting)));
+ box.append(el("p",null,esc(g.line)));
+
+ const e=envelope("For "+C.partnerName,esc(g.letter),true,"♥");
+ const go=el("button","btn",esc(g.button));
+ go.type="button";go.style.display="none";
+
+ const env=e.querySelector(".env");
+ env.addEventListener("click",()=>{
+  go.style.display=env.classList.contains("open")?"inline-block":"none";
+ });
+
+ go.addEventListener("click",()=>{
+  $("#gate").classList.add("hidden");
+  main.classList.remove("hidden");
+  $("#foot").classList.remove("hidden");
+  if(C.music.src)$("#music").classList.remove("hidden");
+  scrollTo(0,0);observe();
+ });
+
+ box.append(e,go);
 }
+
 function buildStory(){
-  const items=arr(C.timeline),s=sec("story","Our first year","Tap a memory to read it."),cnt=el("p","count"),tl=el("div","tl");let seen=0;
-  const upd=()=>cnt.textContent="Memories opened: "+seen+" of "+items.length;
-  items.forEach(m=>{
-    const d=el("div","ms "+(m.size==="big"?"big":"small"));
-    d.append(el("div","date",esc(m.date)),el("h3",null,esc(m.title)));
-    if(m.size==="big"&&m.photo)d.append(media(m.photo,"pic","Memory photo"));
-    const st=el("p","story",esc(m.story)),b=el("button","btn ghost","Read this one");let first=true;
-    b.onclick=()=>{const o=st.classList.toggle("show");b.textContent=o?"Fold it back":"Read this one";if(o&&first){first=false;seen++;upd()}};
-    d.append(b,st);tl.append(d);
-  });upd();s.append(cnt,tl);
-}
-function buildLetter(){
-  const L=C.loveLetter,s=sec("letter","A letter");
-  const html=esc(L.greeting)+"\n\n"+esc(L.body)+"\n\n"+esc(L.closing)+'\n<span class="sig" style="display:block">'+esc(L.signature)+"</span>";
-  const e=envelope(L.label,html,true,"♥");s.append(e);
-  const b=el("button","btn ghost","Close and open again");b.onclick=()=>e.toggle();s.append(b);
-}
-const PET={daisy:["#fff","#f2c230",8],sunflower:["#f4b92c","#6b4423",12],poppy:["#d9382f","#2b1b17",5],rose:["#a3243d","#7a1730",7],tulip:["#e98aa7","#c4568a",3]};
-function flowerSVG(t){
-  const p=PET[t]||PET.daisy;let g="";
-  if(t==="tulip")g='<path d="M18 36 Q16 12 30 10 Q44 12 42 36 Q30 44 18 36Z" fill="'+p[0]+'"/>';
-  else{for(let i=0;i<p[2];i++)g+='<ellipse cx="30" cy="16" rx="5" ry="11" fill="'+p[0]+'" transform="rotate('+(360/p[2]*i)+' 30 30)"/>';g+='<circle cx="30" cy="30" r="6" fill="'+p[1]+'"/>'}
-  return '<svg viewBox="0 0 60 120" aria-hidden="true"><path d="M30 44 Q27 80 30 120" stroke="#5f8a4f" stroke-width="3" fill="none"/><path d="M30 90 Q12 78 10 66 Q26 70 30 90Z" fill="#6f9a5c"/>'+g+'</svg>';
-}
-function buildGarden(){
-  const f=arr(C.flowers),s=sec("garden","Growing with you","Tap a seed to plant it. Tap the flower to read its message.");
-  const g=el("div");g.id="garden";const note=el("div","paper");note.id="gnote";note.style.opacity=1;note.textContent="Nothing planted yet.";
-  let found=0;const total=f.length,cnt=el("p","count","Flowers read: 0 of "+total);
-  f.forEach((fl,i)=>{
-    const w=60+((i*37)%24),left=(i+.5)/Math.max(total,1)*100;
-    const b=el("button","pl",'<span class="seed"></span>'+flowerSVG(fl.type));
-    b.setAttribute("aria-label",fl.title+" seed");
-    b.style.cssText="left:calc("+left+"% - "+(w/2)+"px);width:"+w+"px;height:"+(w*2)+"px;transform:rotate("+(((i*53)%9)-4)+"deg)";
-    let grown=false,seen=false;
-    b.onclick=()=>{
-      if(!grown){grown=true;b.classList.add("grown");return}
-      note.innerHTML="<b>"+esc(fl.title)+"</b>\n"+esc(fl.message);
-      if(!seen){seen=true;found++;cnt.textContent="Flowers read: "+found+" of "+total}
-      if(found===total)note.innerHTML+="\n\nYou found every flower. ♥";
-    };g.append(b);
-  });
-  s.append(g,cnt,note);
-}
-function confetti(w){
-  const cols=["#c4808a","#e9c5c2","#7a2338","#e0b24a"];
-  for(let i=0;i<22;i++){
-    const c=el("span");c.style.cssText="position:absolute;left:50%;top:150px;width:9px;height:12px;background:"+cols[i%4]+";pointer-events:none;animation:pop 1.6s forwards;--x:"+(Math.random()-.5)*300+"px;--y:"+(-80-Math.random()*130)+"px;--r:"+Math.random()*540+"deg";
-    w.append(c);setTimeout(()=>c.remove(),1700);
-  }
-}
-function buildGift(){
-  const list=arr(C.surprises).filter(x=>x&&x.enabled),s=sec("gift","One more thing"),w=el("div","giftwrap");
-  const b=el("button","gift",'<span class="gbody"></span><span class="glid"></span>');b.setAttribute("aria-label","Gift box");
-  const tag=el("p","gtag",esc(C.giftNote)),out=el("div");out.id="gout";let open=false;
-  const reset=el("button","btn ghost","Close the box");reset.style.display="none";
+ const items=arr(C.timeline);
+ const s=sec("story","Our first year","Tap a memory to read it.");
+ const cnt=el("p","count");
+ const tl=el("div","tl");
+ let seen=0;
+ const upd=()=>cnt.textContent="Memories opened: "+seen+" of "+items.length;
+
+ items.forEach(m=>{
+  const d=el("div","ms "+(m.size==="big"?"big":"small"));
+  d.append(el("div","date",esc(m.date)),el("h3",null,esc(m.title)));
+  if(m.size==="big"&&m.photo)d.append(media(m.photo,"pic","Memory photo"));
+  const st=el("p","story",esc(m.story));
+  const b=el("button","btn ghost","Read this one");
+  b.type="button";
+  let first=true;
   b.onclick=()=>{
-    open=!open;b.classList.toggle("open",open);out.innerHTML="";
-    if(open){
-      if(C.effects.confetti&&!noMotion)confetti(w);
-      list.forEach(x=>{
-        const p=el("div","paper","<b>"+esc(x.title)+"</b>\n"+esc(x.message));p.style.opacity=1;
-        if(x.image)p.prepend(media(x.image,"pic","Gift photo"));
-        if(x.video){const v=el("video");v.src=x.video;v.controls=true;p.append(v)}
-        if(x.audio){const a=el("audio");a.src=x.audio;a.controls=true;p.append(a)}
-        if(x.link){const l=el("a",null,"Open the playlist");l.href=x.link;l.target="_blank";l.rel="noopener";p.append(l)}
-        out.append(p);
-      });
-      if(!list.length)out.append(el("p",null,"No surprises enabled yet."));
-    }
-    tag.textContent=open?"Look what's inside.":C.giftNote;reset.style.display=open?"inline-block":"none";
+   const open=st.classList.toggle("show");
+   b.textContent=open?"Fold it back":"Read this one";
+   if(open&&first){first=false;seen++;upd()}
   };
-  reset.onclick=()=>b.click();w.append(b,tag,out,reset);s.append(w);
+  d.append(b,st);tl.append(d);
+ });
+ upd();s.append(cnt,tl);
 }
-let ci=0;const P=()=>arr(C.album.photos);
-function lightbox(i){
-  const ps=P();if(!ps.length)return;ci=(i+ps.length)%ps.length;const p=ps[ci],lb=$("#lb");lb.innerHTML="";
-  const inside=el("div","in");inside.append(media(p.src,"","Photo"),el("p","hand","<b>"+esc(p.caption)+"</b> "+esc(p.date)),el("p",null,esc(p.story)));
-  const row=el("div","row"),prev=el("button","btn ghost","Previous"),next=el("button","btn ghost","Next"),close=el("button","btn","Close");
-  prev.onclick=()=>lightbox(ci-1);next.onclick=()=>lightbox(ci+1);close.onclick=closeLb;
-  row.append(prev,close,next);inside.append(row);lb.append(inside);lb.classList.remove("hidden");close.focus();
+
+function buildLetter(){
+ const L=C.loveLetter,s=sec("letter","A letter");
+ const html=esc(L.greeting)+"\n\n"+esc(L.body)+"\n\n"+esc(L.closing)+
+  '<span class="sig">'+esc(L.signature)+'</span>';
+ const e=envelope(L.label,html,true,"♥");
+ s.append(e);
+ const b=el("button","btn ghost","Close and open again");
+ b.type="button";b.onclick=()=>e.toggle();s.append(b);
+}
+
+/* Interactive flower illustrations */
+const PET={
+ daisy:["#fff","#f2c230",8],
+ sunflower:["#f4b92c","#6b4423",12],
+ poppy:["#d9382f","#2b1b17",5],
+ rose:["#a3243d","#7a1730",7],
+ tulip:["#e98aa7","#c4568a",3]
+};
+
+function flowerSVG(type){
+ const p=PET[type]||PET.daisy;
+ let petals="";
+ if(type==="tulip"){
+  petals='<path d="M18 36 Q16 12 30 10 Q44 12 42 36 Q30 44 18 36Z" fill="'+p[0]+'"/>';
+ }else{
+  for(let i=0;i<p[2];i++){
+   petals+='<ellipse cx="30" cy="16" rx="5" ry="11" fill="'+p[0]+'" transform="rotate('+(360/p[2]*i)+' 30 30)"/>';
+  }
+  petals+='<circle cx="30" cy="30" r="6" fill="'+p[1]+'"/>';
+ }
+ return '<svg viewBox="0 0 60 120" aria-hidden="true"><path d="M30 44 Q27 80 30 120" stroke="#5f8a4f" stroke-width="3" fill="none"/><path d="M30 90 Q12 78 10 66 Q26 70 30 90Z" fill="#6f9a5c"/>'+petals+'</svg>';
+}
+
+/* FIXED GARDEN: each flower blooms and reveals its message on the first click */
+function buildGarden(){
+ const flowers=arr(C.flowers);
+ const section=sec(
+  "garden",
+  "Growing with you",
+  "Tap any seed to watch it bloom and discover a little message."
+ );
+
+ const garden=el("div");
+ garden.id="garden";
+ garden.setAttribute("aria-label","Interactive flower garden");
+
+ const counter=el("p","count");
+ counter.textContent=`Flowers discovered: 0 of ${flowers.length}`;
+
+ const note=el("div");
+ note.id="gnote";
+ note.setAttribute("aria-live","polite");
+ note.textContent=flowers.length
+  ?"Pick a seed and see what grows. 🌱"
+  :"Add flowers to CONFIG.flowers to start your garden.";
+
+ let discovered=0;
+
+ flowers.forEach((flower,index)=>{
+  const button=el("button","pl");
+  const width=48+(index%3)*8;
+  const position=((index+.5)/flowers.length)*100;
+
+  button.type="button";
+  button.style.left=`calc(${position}% - ${width/2}px)`;
+  button.style.width=width+"px";
+  button.style.height="200px";
+  button.setAttribute("aria-label","Grow flower: "+flower.title);
+  button.innerHTML='<span class="seed"></span>'+flowerSVG(flower.type);
+
+  let opened=false;
+
+  button.addEventListener("click",()=>{
+   button.classList.add("grown");
+
+   const title=el("h3",null,esc(flower.title));
+   const message=el("p",null,esc(flower.message));
+   note.replaceChildren(title,message);
+
+   if(!opened){
+    opened=true;discovered++;
+    counter.textContent=`Flowers discovered: ${discovered} of ${flowers.length}`;
+   }
+
+   button.setAttribute("aria-label",flower.title+": "+flower.message);
+
+   if(discovered===flowers.length&&flowers.length>0){
+    note.append(el("p",null,"You found every flower. A little garden, grown with love. ♥"));
+   }
+  });
+
+  garden.append(button);
+ });
+
+ section.append(garden,counter,note);
+}
+
+function confetti(container){
+ const colors=["#c4808a","#e9c5c2","#7a2338","#e0b24a"];
+ for(let i=0;i<22;i++){
+  const bit=el("span");
+  bit.style.cssText=
+   "position:absolute;left:50%;top:150px;width:9px;height:12px;"+
+   "background:"+colors[i%4]+";pointer-events:none;animation:pop 1.6s forwards;"+
+   "--x:"+((Math.random()-.5)*300)+"px;--y:"+(-80-Math.random()*130)+"px;"+
+   "--r:"+Math.random()*540+"deg";
+  container.append(bit);
+  setTimeout(()=>bit.remove(),1700);
+ }
+}
+
+function buildGift(){
+ const list=arr(C.surprises).filter(x=>x&&x.enabled);
+ const s=sec("gift","One more thing");
+ const w=el("div","giftwrap");
+ const b=el("button","gift",'<span class="gbody"></span><span class="glid"></span>');
+ b.type="button";b.setAttribute("aria-label","Open gift box");
+ const tag=el("p","gtag",esc(C.giftNote));
+ const out=el("div");out.id="gout";
+ const reset=el("button","btn ghost","Close the box");
+ reset.type="button";reset.style.display="none";
+ let open=false;
+
+ b.onclick=()=>{
+  open=!open;b.classList.toggle("open",open);out.replaceChildren();
+  if(open){
+   if(C.effects.confetti&&!noMotion)confetti(w);
+   list.forEach(x=>{
+    const p=el("div","paper");
+    p.append(el("b",null,esc(x.title)),el("p",null,esc(x.message)));
+    if(x.image)p.prepend(media(x.image,"pic","Gift photo"));
+    if(x.video){const v=el("video");v.src=x.video;v.controls=true;v.style.maxWidth="100%";p.append(v)}
+    if(x.audio){const a=el("audio");a.src=x.audio;a.controls=true;p.append(a)}
+    if(x.link){
+     const l=el("a",null,"Open the playlist");
+     l.href=x.link;l.target="_blank";l.rel="noopener";p.append(l);
+    }
+    out.append(p);
+   });
+   if(!list.length)out.append(el("p",null,"No surprises enabled yet."));
+  }
+  tag.textContent=open?"Look what's inside.":C.giftNote;
+  reset.style.display=open?"inline-block":"none";
+ };
+ reset.onclick=()=>b.click();
+ w.append(b,tag,out,reset);s.append(w);
+}
+
+let ci=0;
+const photos=()=>arr(C.album.photos);
+
+function lightbox(index){
+ const ps=photos();if(!ps.length)return;
+ ci=(index+ps.length)%ps.length;
+ const p=ps[ci],lb=$("#lb");
+ lb.replaceChildren();
+
+ const inside=el("div","in");
+ inside.append(media(p.src,"","Photo"));
+ inside.append(el("p",null,"<b>"+esc(p.caption)+"</b> "+esc(p.date)));
+ inside.append(el("p",null,esc(p.story)));
+
+ const row=el("div","row");
+ const prev=el("button","btn ghost","Previous");
+ const next=el("button","btn ghost","Next");
+ const close=el("button","btn","Close");
+
+ prev.onclick=()=>lightbox(ci-1);
+ next.onclick=()=>lightbox(ci+1);
+ close.onclick=closeLb;
+ row.append(prev,close,next);inside.append(row);
+ lb.append(inside);lb.classList.remove("hidden");close.focus();
 }
 function closeLb(){$("#lb").classList.add("hidden")}
 $("#lb").addEventListener("click",e=>{if(e.target.id==="lb")closeLb()});
-addEventListener("keydown",e=>{if($("#lb").classList.contains("hidden"))return;if(e.key==="Escape")closeLb();if(e.key==="ArrowRight")lightbox(ci+1);if(e.key==="ArrowLeft")lightbox(ci-1)});
+addEventListener("keydown",e=>{
+ if($("#lb").classList.contains("hidden"))return;
+ if(e.key==="Escape")closeLb();
+ if(e.key==="ArrowRight")lightbox(ci+1);
+ if(e.key==="ArrowLeft")lightbox(ci-1);
+});
+
 function buildAlbum(){
-  const s=sec("album","Our little photo album","Tap a polaroid for the story."),a=el("div","alb");
-  P().forEach((p,i)=>{const b=el("button","pol");b.append(media(p.src,"","Photo"),el("span",null,esc(p.caption)));b.style.transform="rotate("+(((i*7)%9)-4)+"deg)";b.onclick=()=>lightbox(i);a.append(b)});
-  s.append(a);const v=C.album.video;
-  if(v&&v.src){const vi=el("video");vi.src=v.src;vi.controls=true;s.append(el("p","hand",esc(v.caption)),vi)}
+ const s=sec("album","Our little photo album","Tap a polaroid for the story.");
+ const a=el("div","alb");
+ photos().forEach((p,i)=>{
+  const b=el("button","pol");
+  b.type="button";
+  b.append(media(p.src,"","Photo"),el("span",null,esc(p.caption)));
+  b.style.transform="rotate("+(((i*7)%9)-4)+"deg)";
+  b.onclick=()=>lightbox(i);
+  a.append(b);
+ });
+ s.append(a);
+
+ const v=C.album.video;
+ if(v&&v.src){
+  s.append(el("p",null,esc(v.caption)));
+  const vi=el("video");vi.src=v.src;vi.controls=true;
+  vi.style.maxWidth="100%";s.append(vi);
+ }
 }
+
 function buildOpenWhen(){
-  const s=sec("openwhen","Open when…"),g=el("div","ow");
-  arr(C.openWhen).forEach(o=>g.append(envelope(o.label,esc(o.note),false,"♥")));s.append(g);
+ const s=sec("openwhen","Open when…");
+ const g=el("div","ow");
+ arr(C.openWhen).forEach(o=>g.append(envelope(o.label,esc(o.note),false,"♥")));
+ s.append(g);
 }
+
 function buildLoves(){
-  const s=sec("loves","Things I love about you","Tap a little note.");
-  const w=el("div","scraps"),out=el("div","paper");out.id="lout";out.style.opacity=1;out.textContent="Pick one.";
-  const cols=["#fff3b8","#fadadd","#e4efe0","#e7e1f3","#fde5cf"];let cur=null;
-  arr(C.loves).forEach((t,i)=>{
-    const b=el("button","scrap","No. "+(i+1));b.style.background=cols[i%5];b.style.transform="rotate("+(((i*5)%9)-4)+"deg)";
-    b.onclick=()=>{if(cur)cur.classList.remove("on");b.classList.add("on");cur=b;out.textContent=t};w.append(b);
-  });s.append(w,out);
+ const s=sec("loves","Things I love about you","Tap a little note.");
+ const w=el("div","scraps"),out=el("div","paper");
+ out.id="lout";out.textContent="Pick one.";
+ const colors=["#fff3b8","#fadadd","#e4efe0","#e7e1f3","#fde5cf"];
+ let current=null;
+
+ arr(C.loves).forEach((text,index)=>{
+  const b=el("button","scrap","No. "+(index+1));
+  b.type="button";
+  b.style.background=colors[index%colors.length];
+  b.style.transform="rotate("+(((index*5)%9)-4)+"deg)";
+  b.onclick=()=>{
+   if(current)current.classList.remove("on");
+   b.classList.add("on");current=b;out.textContent=text;
+  };
+  w.append(b);
+ });
+ s.append(w,out);
 }
+
 function buildCounter(){
-  const s=sec("counter","Time so far"),c=el("div","clock");s.append(c);
-  const d=new Date(C.anniversaryDate);
-  if(!C.anniversaryDate||isNaN(d)){c.textContent="Set the anniversary date in CONFIG.";return}
-  const tick=()=>{
-    const ms=Date.now()-d;if(ms<0){c.textContent="It starts on "+d.toLocaleDateString();return}
-    const t=Math.floor(ms/1000),dd=Math.floor(t/86400),h=Math.floor(t%86400/3600),m=Math.floor(t%3600/60),sc=t%60;
-    c.innerHTML="<span><b>"+dd+"</b> days</span><span><b>"+h+"</b> hours</span><span><b>"+m+"</b> minutes</span><span><b>"+sc+"</b> seconds</span>";
-  };tick();setInterval(tick,1000);
+ const s=sec("counter","Time so far");
+ const c=el("div","clock");s.append(c);
+ const date=new Date(C.anniversaryDate);
+
+ if(!C.anniversaryDate||isNaN(date)){
+  c.textContent="Set the anniversary date in CONFIG.";
+  return;
+ }
+
+ function tick(){
+  const ms=Date.now()-date;
+  if(ms<0){c.textContent="It starts on "+date.toLocaleDateString();return}
+  const t=Math.floor(ms/1000);
+  const days=Math.floor(t/86400);
+  const hours=Math.floor(t%86400/3600);
+  const minutes=Math.floor(t%3600/60);
+  const seconds=t%60;
+  c.innerHTML=
+   "<span><b>"+days+"</b> days</span>"+
+   "<span><b>"+hours+"</b> hours</span>"+
+   "<span><b>"+minutes+"</b> minutes</span>"+
+   "<span><b>"+seconds+"</b> seconds</span>";
+ }
+ tick();setInterval(tick,1000);
 }
+
 function buildNext(){
-  const N=C.next,s=sec("next","Our next chapter");s.append(el("p",null,esc(N.message)));
-  const g=el("div","ow");arr(N.promises).forEach(p=>g.append(envelope(p.label,esc(p.note),false,"★")));s.append(g);
-  const f=el("div","final"),b=el("button","btn",esc(N.buttonText)),out=el("div","paper");
-  out.id="fin";out.style.opacity=1;out.classList.add("hidden");out.textContent=N.finalMessage;
-  b.onclick=()=>{out.classList.toggle("hidden");if(!out.classList.contains("hidden")&&C.effects.confetti&&!noMotion)confetti(f)};
-  const r=el("button","btn ghost","Back to the beginning");r.onclick=restart;f.append(b,out,r);s.append(f);
+ const n=C.next,s=sec("next","Our next chapter");
+ s.append(el("p",null,esc(n.message)));
+ const g=el("div","ow");
+ arr(n.promises).forEach(p=>g.append(envelope(p.label,esc(p.note),false,"★")));
+ s.append(g);
+
+ const f=el("div","final");
+ const b=el("button","btn",esc(n.buttonText));
+ const out=el("div","paper");
+ out.classList.add("hidden");out.textContent=n.finalMessage;
+ const restartButton=el("button","btn ghost","Back to the beginning");
+ b.onclick=()=>{
+  out.classList.toggle("hidden");
+  if(!out.classList.contains("hidden")&&C.effects.confetti&&!noMotion)confetti(f);
+ };
+ restartButton.onclick=restart;
+ f.append(b,out,restartButton);s.append(f);
 }
+
 function buildMusic(){
-  const a=new Audio();a.loop=true;const btn=$("#mbtn"),vol=$("#vol");
-  if(!C.music.src)return;a.src=C.music.src;a.volume=C.music.startVolume;vol.value=a.volume;
-  btn.onclick=()=>{if(a.paused)a.play().then(()=>btn.textContent="Ⅱ").catch(()=>{btn.title="Audio file not found"});else{a.pause();btn.textContent="▶"}};
-  vol.oninput=()=>a.volume=Number(vol.value);btn.title=C.music.title;
+ const audio=new Audio();audio.loop=true;
+ const btn=$("#mbtn"),volume=$("#vol");
+ if(!C.music.src)return;
+ audio.src=C.music.src;audio.volume=C.music.startVolume;
+ volume.value=audio.volume;
+ btn.onclick=()=>{
+  if(audio.paused){
+   audio.play().then(()=>btn.textContent="Ⅱ").catch(()=>{btn.title="Check your audio file path"});
+  }else{audio.pause();btn.textContent="▶"}
+ };
+ volume.oninput=()=>audio.volume=Number(volume.value);
+ btn.title=C.music.title;
 }
+
 function observe(){
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.08});
-  document.querySelectorAll(".rv").forEach(x=>io.observe(x));
+ if(!("IntersectionObserver" in window)){
+  document.querySelectorAll(".rv").forEach(x=>x.classList.add("in"));return;
+ }
+ const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+   if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}
+  });
+ },{threshold:.08});
+ document.querySelectorAll(".rv").forEach(x=>io.observe(x));
 }
+
 addEventListener("scroll",()=>{
-  const h=document.documentElement;$("#bar").style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+"%";
+ const h=document.documentElement;
+ $("#bar").style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+"%";
 },{passive:true});
-function restart(){main.classList.add("hidden");$("#foot").classList.add("hidden");buildGate();$("#gate").classList.remove("hidden");scrollTo(0,0)}
+
+function restart(){
+ main.classList.add("hidden");
+ $("#foot").classList.add("hidden");
+ buildGate();
+ $("#gate").classList.remove("hidden");
+ scrollTo(0,0);
+}
 $("#replay").onclick=restart;
 
-const SEC={story:buildStory,letter:buildLetter,garden:buildGarden,gift:buildGift,album:buildAlbum,openWhen:buildOpenWhen,loves:buildLoves,counter:buildCounter,next:buildNext};
-Object.keys(SEC).forEach(k=>{if(C.show[k]!==false){try{SEC[k]()}catch(e){console.warn("Section "+k+" failed:",e)}}});
-buildGate();buildMusic();
+const BUILDERS={
+ story:buildStory,letter:buildLetter,garden:buildGarden,gift:buildGift,
+ album:buildAlbum,openWhen:buildOpenWhen,loves:buildLoves,
+ counter:buildCounter,next:buildNext
+};
+
+Object.keys(BUILDERS).forEach(key=>{
+ if(CONFIG.show[key]!==false){
+  try{BUILDERS[key]()}
+  catch(error){console.error("Section error:",key,error)}
+ }
+});
+
+buildGate();
+buildMusic();
 </script>
 </body>
 </html>
