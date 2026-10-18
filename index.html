@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +25,7 @@ button:focus-visible{outline:3px solid var(--wine);outline-offset:3px}
 .greet{font:700 2.3rem var(--hand);color:var(--wine)}
 .btn{background:var(--wine);color:#fff7ef;border:0;padding:10px 20px;border-radius:5px 12px;font:1.2rem var(--hand);margin:5px}
 .ghost{background:transparent;color:var(--wine);border:1px dashed var(--wine)}
-section{max-width:900px;margin:0 auto;padding:65px 24px 25px;scroll-margin-top:25px}
+section{max-width:1100px;margin:0 auto;padding:65px 24px 25px;scroll-margin-top:25px}
 .sub{display:block;position:relative;margin:12px 0 24px;line-height:1.6;font-style:italic}
 .ew{width:min(340px,100%);margin:20px auto}
 .ew.big{width:min(430px,100%)}
@@ -53,36 +52,33 @@ section{max-width:900px;margin:0 auto;padding:65px 24px 25px;scroll-margin-top:2
 .pic{width:100%;max-height:280px;object-fit:cover;display:block;margin:10px 0}
 .ph{display:flex;align-items:center;justify-content:center;text-align:center;min-height:150px;padding:10px;border:2px dashed var(--rose);background:#f3e3d6;font:1rem var(--hand)}
 .count{font:1rem var(--hand)}
-/* GARDEN FIX: separate heading, instructions, garden and note */
-#garden{
- position:relative;display:block;width:100%;height:280px;
- margin:28px 0 20px;overflow:hidden;isolation:isolate;border-radius:12px;
- background:linear-gradient(to bottom,#fbeee8 0%,#fbeee8 67%,#9a755b 67%,#9a755b 100%);
-}
-#garden .pl{
- position:absolute;bottom:18px;z-index:2;display:flex;align-items:flex-end;
- justify-content:center;padding:0;border:0;background:transparent;
- transform-origin:bottom center;touch-action:manipulation;
-}
-#garden .pl svg{
- display:block;width:100%;height:180px;transform:scaleY(0);
- transform-origin:bottom center;transition:transform .6s;pointer-events:none;
-}
-#garden .pl.grown svg{transform:scaleY(1)}
-#garden .seed{
- position:absolute;bottom:0;left:50%;width:18px;height:10px;
- border-radius:50%;background:#5a3b2a;transform:translateX(-50%);
-}
-#garden .pl.grown .seed{opacity:0}
-#garden .pl:focus-visible{outline:3px solid var(--wine)}
-#garden+.count{margin-top:12px}
-#gnote{
- position:relative;min-height:90px;margin:18px 0;padding:18px;
- border-radius:8px;background:#fffaf0;color:var(--brown);
- font:1.25rem/1.6 var(--hand);white-space:pre-line;
-}
+
+/* GARDEN BED: every plant sits in normal page flow, so nothing can be cut off or hidden */
+#bed{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:22px 8px;padding:24px 12px 16px;margin:20px 0 14px;
+ background:linear-gradient(#fbeee8,#f6e2d8);border-radius:14px;box-shadow:inset 0 0 0 2px #e9d6bf}
+.plant{display:flex;flex-direction:column;align-items:center;padding:0;border:0;background:none;touch-action:manipulation}
+.plant .stage{display:flex;align-items:flex-end;justify-content:center;width:100%;height:150px}
+.plant:not(.grown) .stage::after{content:"tap to plant";font:1.1rem var(--hand);color:var(--rose);margin-bottom:14px}
+.plant svg{display:block;flex:none;width:75px;height:150px;transform:scale(0);transform-origin:50% 100%;transition:transform .7s cubic-bezier(.3,1.5,.5,1)}
+.plant.grown svg{transform:scale(1)}
+.plant.grown .stage::after{content:none}
+.plant.sel svg{animation:sway 2.4s ease-in-out infinite}
+.mound{position:relative;display:block;width:100px;height:32px;margin-top:-6px;background:#8a6248;box-shadow:inset 0 6px 0 #6d4b36;
+ border-radius:50px 50px 8px 8px/32px 32px 8px 8px}
+.seed{position:absolute;left:50%;top:-7px;width:26px;height:16px;margin-left:-13px;border-radius:50%;background:#4a2e1f;border:2px solid #fff7ef;transition:opacity .3s}
+.seed::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:2px dashed var(--rose);animation:ping 1.8s ease-out infinite}
+.plant.grown .seed{opacity:0}.plant.grown .seed::after{animation:none}
+.plant:hover .mound{background:#9a6f52}
+.tag{margin-top:6px;font:1.15rem var(--hand);color:var(--brown)}
+.plant.sel .tag{color:var(--wine);font-weight:700}
+@keyframes ping{0%{transform:scale(.7);opacity:.9}100%{transform:scale(1.3);opacity:0}}
+@keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+#bed+.count{margin-top:12px}
+#gnote{position:relative;min-height:90px;margin:14px 0;padding:18px;border-radius:8px;background:#fffaf0;color:var(--brown);
+ font:1.25rem/1.6 var(--hand);white-space:pre-line;box-shadow:2px 3px #5b423622}
 #gnote p{margin:5px 0}
 #gnote h3{color:var(--wine)}
+
 .giftwrap{text-align:center;min-height:300px;position:relative}
 .gift{position:relative;width:170px;height:150px;margin:60px auto 0;border:0;background:none}
 .gbody{position:absolute;bottom:0;left:0;right:0;height:100px;background:var(--rose)}
@@ -116,8 +112,6 @@ footer{text-align:center;padding:30px 10px 70px}
 @keyframes pop{to{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}}
 @media(max-width:600px){
  section{padding:45px 17px 20px}
- #garden{height:250px;margin-top:22px}
- #garden .pl svg{height:150px}
  .clock{gap:12px}
 }
 @media(prefers-reduced-motion:reduce){
@@ -396,68 +390,47 @@ function flowerSVG(type){
  return '<svg viewBox="0 0 60 120" aria-hidden="true"><path d="M30 44 Q27 80 30 120" stroke="#5f8a4f" stroke-width="3" fill="none"/><path d="M30 90 Q12 78 10 66 Q26 70 30 90Z" fill="#6f9a5c"/>'+petals+'</svg>';
 }
 
-/* FIXED GARDEN: each flower blooms and reveals its message on the first click */
+/* GARDEN: plant every seed, then tap a flower to read what it says. */
 function buildGarden(){
- const flowers=arr(C.flowers);
- const section=sec(
-  "garden",
-  "Growing with you",
-  "Tap any seed to watch it bloom and discover a little message."
- );
-
- const garden=el("div");
- garden.id="garden";
- garden.setAttribute("aria-label","Interactive flower garden");
-
+ const flowers=arr(C.flowers),total=flowers.length;
+ const section=sec("garden","Growing with you","Plant each seed. Every flower is something I love about you.");
+ const bed=el("div");bed.id="bed";
  const counter=el("p","count");
- counter.textContent=`Flowers discovered: 0 of ${flowers.length}`;
+ const note=el("div");note.id="gnote";note.setAttribute("aria-live","polite");
+ const intro=total?"Tap a seed to plant it. \uD83C\uDF31":"Add flowers to CONFIG.flowers to start your garden.";
+ let discovered=0,selected=null;
+ const plants=[];
+ const updateCount=()=>{counter.textContent="Flowers discovered: "+discovered+" of "+total};
+ note.textContent=intro;updateCount();
 
- const note=el("div");
- note.id="gnote";
- note.setAttribute("aria-live","polite");
- note.textContent=flowers.length
-  ?"Pick a seed and see what grows. 🌱"
-  :"Add flowers to CONFIG.flowers to start your garden.";
-
- let discovered=0;
-
- flowers.forEach((flower,index)=>{
-  const button=el("button","pl");
-  const width=48+(index%3)*8;
-  const position=((index+.5)/flowers.length)*100;
-
-  button.type="button";
-  button.style.left=`calc(${position}% - ${width/2}px)`;
-  button.style.width=width+"px";
-  button.style.height="200px";
-  button.setAttribute("aria-label","Grow flower: "+flower.title);
-  button.innerHTML='<span class="seed"></span>'+flowerSVG(flower.type);
-
-  let opened=false;
-
-  button.addEventListener("click",()=>{
-   button.classList.add("grown");
-
-   const title=el("h3",null,esc(flower.title));
-   const message=el("p",null,esc(flower.message));
-   note.replaceChildren(title,message);
-
-   if(!opened){
-    opened=true;discovered++;
-    counter.textContent=`Flowers discovered: ${discovered} of ${flowers.length}`;
-   }
-
-   button.setAttribute("aria-label",flower.title+": "+flower.message);
-
-   if(discovered===flowers.length&&flowers.length>0){
-    note.append(el("p",null,"You found every flower. A little garden, grown with love. ♥"));
-   }
+ flowers.forEach((flower,i)=>{
+  const b=el("button","plant",'<span class="stage">'+flowerSVG(flower.type)+'</span><span class="mound"><span class="seed"></span></span><span class="tag">Seed '+(i+1)+'</span>');
+  const tag=b.querySelector(".tag");
+  b.type="button";
+  b.style.marginTop=(i%2?16:0)+"px";            // slightly uneven, like a real garden
+  b.setAttribute("aria-label","Seed "+(i+1)+": tap to plant it");
+  b.addEventListener("click",()=>{
+   b.classList.add("grown");
+   if(selected&&selected!==b)selected.classList.remove("sel");
+   b.classList.add("sel");selected=b;
+   tag.textContent=flower.title;
+   note.replaceChildren(el("h3",null,esc(flower.title)),el("p",null,esc(flower.message)));
+   if(!b.dataset.seen){b.dataset.seen="1";discovered++;updateCount()}
+   b.setAttribute("aria-label",flower.title+": tap to read again");
+   if(discovered===total)note.append(el("p",null,"You found every flower. \u2665"));
   });
-
-  garden.append(button);
+  bed.append(b);plants.push(b);
  });
 
- section.append(garden,counter,note);
+ const again=el("button","btn ghost","Replant the garden");
+ again.type="button";
+ again.addEventListener("click",()=>{
+  plants.forEach((p,i)=>{p.classList.remove("grown","sel");delete p.dataset.seen;
+   p.querySelector(".tag").textContent="Seed "+(i+1);p.setAttribute("aria-label","Seed "+(i+1)+": tap to plant it")});
+  discovered=0;selected=null;updateCount();note.textContent=intro;
+ });
+ section.append(bed,counter,note);
+ if(total)section.append(again);
 }
 
 function confetti(container){
